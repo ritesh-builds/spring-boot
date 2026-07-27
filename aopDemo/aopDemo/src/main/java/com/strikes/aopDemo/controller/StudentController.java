@@ -11,14 +11,17 @@ import com.strikes.aopDemo.dto.Student;
 import com.strikes.aopDemo.service.StudentService;
 
 
+
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
 
-    private StudentService studentService;
+    private final StudentService studentService;
+    
     public StudentController(StudentService studentService){
         this.studentService = studentService;
     }
+    
     @PostMapping
     public ResponseEntity<Object> createStudent(@RequestBody Student student){
         Object s = studentService.createStudent(student);
@@ -26,8 +29,10 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<String> dummyMethod(){
-        String s = "Radhika";
-        return ResponseEntity.ok( studentService.dummyMethod(s));
+    public ResponseEntity<String> getStudent() {
+        String s = "All students data";
+        return ResponseEntity.ok(studentService.getStudent(s));
     }
+    
+
 }
