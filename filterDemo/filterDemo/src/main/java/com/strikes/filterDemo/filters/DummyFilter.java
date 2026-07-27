@@ -1,0 +1,20 @@
+package com.strikes.filterDemo.filters;
+
+import jakarta.servlet.*;
+import java.io.IOException;
+
+public class DummyFilter implements Filter {
+
+
+    @Override
+    public void doFilter(ServletRequest request,
+                         ServletResponse response,
+                         FilterChain chain)
+            throws IOException, ServletException {
+
+        System.out.println("Dummy filter Called");
+
+        chain.doFilter(request, response);
+
+    }
+}
