@@ -6,19 +6,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.strikes.aopDemo.dto.Student;
-import com.strikes.aopDemo.service.StudentService;
-
-
+import com.strikes.aopDemo.service.StudentServiceInterface;
 
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
 
-    private final StudentService studentService;
+    private final StudentServiceInterface studentService;
     
-    public StudentController(StudentService studentService){
+    public StudentController(StudentServiceInterface studentService){
         this.studentService = studentService;
     }
     
@@ -32,7 +29,5 @@ public class StudentController {
     public ResponseEntity<String> getStudent() {
         String s = "All students data";
         return ResponseEntity.ok(studentService.getStudent(s));
-    }
-    
-
+    }   
 }
