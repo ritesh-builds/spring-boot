@@ -30,8 +30,14 @@ public class SimpleAspect {
             if(operation.isBlank()){
                 operation = joinPoint.getSignature().getName();
             }
-//            String methodName = joinPoint.getSignature().getName();
-            System.out.println("Time taken by the method: "+operation+" is about: "+duration+"ms.");
+
+            long warningThreshold = trackExecutionTime.warnAfter();
+
+            if(duration >= warningThreshold){
+                System.out.println("SLOW OPERATION ALERT: " +
+                        "Time taken by the method: " +
+                        operation+" is about: "+duration+"ms.");
+            } else System.out.println("Time taken by the method: "+operation+" is about: "+duration+"ms.");
         }
     }
 }
