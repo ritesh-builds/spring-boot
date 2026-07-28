@@ -2,7 +2,6 @@ package com.strikes.aopDemo.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,10 +15,10 @@ public class LoggingAspect {
 //        // empty body
 //    }
 
-    @Before("com.strikes.aopDemo.aspect.ApplicationPointcuts.publicServiceMethod")
-    public void logBeforeMethod() {
-        System.out.println("Method Intercepted.");
-    }
+    // @Before("com.strikes.aopDemo.aspect.ApplicationPointcuts.publicServiceMethod")
+    // public void logBeforeMethod() {
+    //     System.out.println("Method Intercepted.");
+    // }
 
     // @Before("execution(* com.strikes.aopDemo.service.StudentService.createStudent(..))")
     // @Before("within(com.strikes.aopDemo.service.StudentService)")
