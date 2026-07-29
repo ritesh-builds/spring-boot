@@ -1,8 +1,11 @@
 package in.strikes.springJDBCDemo.repository;
 
 import in.strikes.springJDBCDemo.model.Student;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository
@@ -14,7 +17,9 @@ public class StudentRepository {
 
     private JdbcTemplate jdbcTemplate;
 
-    private StudentRowMapper studentRowMapper = new StudentRowMapper();
+    // private StudentRowMapper studentRowMapper = new StudentRowMapper();
+
+    private RowMapper<Student> rowMapper = new BeanPropertyRowMapper<>(Student.class);
 
     public StudentRepository(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
@@ -78,7 +83,7 @@ public class StudentRepository {
                 SELECT id, email, name, age 
                 FROM students WHERE id = ?
                 """;
-        return jdbcTemplate.queryForObject(sql, studentRowMapper, id);
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     public List<Student> getStudent(){
@@ -87,7 +92,7 @@ public class StudentRepository {
                         FROM students
                     """;
 
-        List<Student> students = jdbcTemplate.query(sql, studentRowMapper);
+        List<Student> students = jdbcTemplate.query(sql, rowMapper);
         return students;
     }
 }
