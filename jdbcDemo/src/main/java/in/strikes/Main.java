@@ -1,5 +1,6 @@
 package in.strikes;
 
+import in.strikes.model.Student;
 import in.strikes.repository.StudentRepository;
 
 public class Main {
@@ -7,11 +8,11 @@ public class Main {
         System.out.println("Hello World..");
 
         StudentRepository studentRepository = new StudentRepository();
-        // studentRepository.createUser();
-        // studentRepository.updateUser();
-        // studentRepository.deleteUser();
-        // studentRepository.readUsers();
-        studentRepository.getUserById();
+        studentRepository.createStudent(new Student("Jiya", "jiya@gmail.com", 21));
+        // studentRepository.updateStudent();
+        // studentRepository.deleteStudent();
+        // studentRepository.readStudents();
+        // studentRepository.getStudentById();
     }
 
     

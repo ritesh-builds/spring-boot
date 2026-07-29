@@ -17,6 +17,14 @@ public class Student {
                 '}';
     }
 
+    public Student(String name, String email, int age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
+
+    public Student(){}
+
     public long getId() {
         return id;
     }
