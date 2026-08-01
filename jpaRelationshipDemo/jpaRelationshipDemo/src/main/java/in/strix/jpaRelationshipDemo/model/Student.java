@@ -25,4 +25,15 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "dept_id")
     private Department department;
+
+//    private void addDepartment(Department department){
+//        this.department = department;
+//        this.department.getStudents().add(this);
+//    }
+//
+//    private void removeDepartment(Department department){
+//        this.department = null;
+//        this.department.getStudents().remove(this);
+//    }
+
 }

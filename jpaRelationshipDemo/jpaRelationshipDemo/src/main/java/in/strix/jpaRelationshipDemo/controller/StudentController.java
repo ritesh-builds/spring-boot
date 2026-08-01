@@ -21,4 +21,11 @@ public class StudentController {
         studentService.createStudent(student, deptId);
         return ResponseEntity.ok("DONE");
     }
+
+    @PostMapping("/withDept")
+    public ResponseEntity<String> createStudent(@RequestBody Student student,
+                                                @RequestParam String deptName){
+        studentService.createStudent(student, deptName);
+        return ResponseEntity.ok("DONE");
+    }
 }

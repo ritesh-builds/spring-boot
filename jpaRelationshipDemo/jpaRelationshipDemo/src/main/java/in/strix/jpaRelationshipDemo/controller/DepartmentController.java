@@ -3,10 +3,7 @@ package in.strix.jpaRelationshipDemo.controller;
 import in.strix.jpaRelationshipDemo.model.Department;
 import in.strix.jpaRelationshipDemo.service.DepartmentService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/department")
@@ -23,4 +20,12 @@ public class DepartmentController {
         departmentService.createDepartment(department);
         return ResponseEntity.ok("DONE");
     }
+
+    @PostMapping("/withStudent")
+    public ResponseEntity<String> createDepartment(@RequestBody Department department,
+                                                   @RequestParam String studentName){
+        departmentService.createDepartment(department, studentName);
+        return ResponseEntity.ok("DONE");
+    }
+
 }

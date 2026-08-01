@@ -5,6 +5,8 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import in.strix.hibernateInternals.model.Student;
 
+import java.util.List;
+
 @Repository
 public class StudentRepository {
 
@@ -13,6 +15,20 @@ public class StudentRepository {
 
     public void save(Student student){
         entityManager.persist(student);
+    }
+
+    public void saveAll(List<Student> students){
+        int counter = 0 ;
+        for(Student student: students){
+            entityManager.persist(student);
+            counter++;
+            if(counter % 100 == 0){
+                entityManager.flush();
+                entityManager.clear();
+            }
+        }
+        entityManager.flush();
+        entityManager.clear();
     }
 
     public Student findById(long id) {

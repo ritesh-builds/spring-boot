@@ -1,28 +1,24 @@
 package in.strix.jpaRelationshipDemo.model;
 
 import jakarta.persistence.*;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 
 @Entity
-public class Department {
+public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String bio;
 
-    @OneToMany(mappedBy = "department")
-    private List<Student> students = new ArrayList<>();
-
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

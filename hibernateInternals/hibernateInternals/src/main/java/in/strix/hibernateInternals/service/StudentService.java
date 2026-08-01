@@ -4,7 +4,6 @@ import java.util.List;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-
 import in.strix.hibernateInternals.model.Student;
 import in.strix.hibernateInternals.repository.StudentRepository;
 

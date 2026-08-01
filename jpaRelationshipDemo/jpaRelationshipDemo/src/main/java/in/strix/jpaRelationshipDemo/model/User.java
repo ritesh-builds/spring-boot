@@ -1,20 +1,20 @@
 package in.strix.jpaRelationshipDemo.model;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 
 @Entity
-public class Department {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,6 @@ public class Department {
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Student> students = new ArrayList<>();
-
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
 }
