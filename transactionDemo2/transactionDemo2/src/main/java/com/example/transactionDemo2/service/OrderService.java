@@ -18,7 +18,7 @@ public class OrderService {
     }
 
     @Transactional(
-            isolation = Isolation.READ_COMMITTED
+            isolation = Isolation.REPEATABLE_READ
     )
     public void placeOrder(Order order) {
         orderRepository.save(order);

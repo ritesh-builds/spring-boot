@@ -18,7 +18,8 @@ public class PaymentAuditService {
     }
 
     @Transactional(
-            propagation = Propagation.REQUIRED
+            propagation = Propagation.REQUIRED,
+            isolation = Isolation.REPEATABLE_READ
     )
     public void audit(Order order) {
         PaymentAudit paymentAudit = new PaymentAudit(order.getAmount(), order.getId(), true);
